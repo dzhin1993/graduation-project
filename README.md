@@ -31,7 +31,7 @@
 `curl -s -X POST http://localhost:8080/app/votes?restaurantId=100002 --user user@yandex.ru:password`
 
 #### update vote 100017 for restaurant 100003 (only if current time is before 11:00 a.m. and user is voted this day)
-`curl -s -X PUT http://localhost:8080/app/votes/100018?restaurantId=100003 --user user@yandex.ru:password`
+`curl -s -X PUT http://localhost:8080/app/votes/100019?restaurantId=100003 --user user@yandex.ru:password`
 
 ### for admin
 

@@ -24,17 +24,23 @@ import java.util.stream.Collectors;
 @Service
 public class MenuService {
 
-    @Autowired
-    private RestaurantRepository restaurantRepository;
+    private final RestaurantRepository restaurantRepository;
 
-    @Autowired
-    private LunchRepository lunchRepository;
+    private final LunchRepository lunchRepository;
 
-    @Autowired
-    private MenuItemRepository menuItemRepository;
+    private final MenuItemRepository menuItemRepository;
 
-    @Autowired
-    private MenuMapper mapper;
+    private final MenuMapper mapper;
+
+    public MenuService(RestaurantRepository restaurantRepository,
+                       LunchRepository lunchRepository,
+                       MenuItemRepository menuItemRepository,
+                       MenuMapper mapper) {
+        this.restaurantRepository = restaurantRepository;
+        this.lunchRepository = lunchRepository;
+        this.menuItemRepository = menuItemRepository;
+        this.mapper = mapper;
+    }
 
     @Cacheable("menus")
     public List<MenuTo> getByDate(LocalDate registered) {

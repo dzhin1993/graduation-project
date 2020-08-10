@@ -4,7 +4,6 @@ import model.Lunch;
 import model.MenuItem;
 import model.Restaurant;
 import org.mapstruct.Mapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import to.LunchTo;
 import to.MenuTo;
@@ -17,11 +16,14 @@ import java.util.List;
 @Component
 public class MenuMapper {
 
-    @Autowired
-    private LunchMapper lunchMapper;
+    private final LunchMapper lunchMapper;
 
-    @Autowired
-    private RestaurantMapper restaurantMapper;
+    private final RestaurantMapper restaurantMapper;
+
+    public MenuMapper(LunchMapper lunchMapper, RestaurantMapper restaurantMapper) {
+        this.lunchMapper = lunchMapper;
+        this.restaurantMapper = restaurantMapper;
+    }
 
     public MenuTo toTo(List<MenuItem> items) {
         MenuTo to = new MenuTo();

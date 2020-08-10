@@ -21,14 +21,19 @@ public class VotingService {
 
     public static LocalTime CHANGE_VOTE_TIME = LocalTime.of(11, 0);
 
-    @Autowired
-    private VotingRepository votingRepository;
+    private final VotingRepository votingRepository;
 
-    @Autowired
-    private RestaurantRepository restaurantRepository;
+    private final RestaurantRepository restaurantRepository;
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+
+    public VotingService(UserRepository userRepository,
+                         RestaurantRepository restaurantRepository,
+                         VotingRepository votingRepository) {
+        this.userRepository = userRepository;
+        this.restaurantRepository = restaurantRepository;
+        this.votingRepository = votingRepository;
+    }
 
     @Transactional
     public Vote create(int userId, int restaurantId) {

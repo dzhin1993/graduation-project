@@ -1,8 +1,7 @@
 package web;
 
+import lombok.extern.slf4j.Slf4j;
 import model.Vote;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -12,13 +11,12 @@ import service.VotingService;
 
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequestMapping(value = VotingController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
 public class VotingController {
 
     public static final String REST_URL = "/votes";
-
-    private final Logger log = LoggerFactory.getLogger(getClass());
 
     private final VotingService service;
     private final VotingRepository repository;

@@ -8,8 +8,8 @@ import javax.persistence.*;
 @Access(AccessType.FIELD)
 @Getter
 @Setter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
+@AllArgsConstructor
 public abstract class AbstractBaseEntity {
     public static final int START_SEQ = 100000;
 

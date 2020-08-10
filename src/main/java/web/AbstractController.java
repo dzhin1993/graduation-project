@@ -1,24 +1,18 @@
 package web;
 
+import lombok.extern.slf4j.Slf4j;
 import model.AbstractBaseEntity;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import repository.AbstractRepository;
-import util.exception.NotFoundException;
 
 import javax.validation.Valid;
 import java.util.List;
 
-import static util.ValidationUtil.*;
-
+@Slf4j
 public abstract class AbstractController<E extends AbstractBaseEntity, R extends AbstractRepository<E>> {
     private final R repository;
-    private final Logger log = LoggerFactory.getLogger(getClass());
 
     protected AbstractController(R repository) {
         this.repository = repository;

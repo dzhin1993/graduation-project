@@ -54,14 +54,4 @@ public class User extends AbstractNamedEntity {
         this.registered = registered;
         this.roles = Set.copyOf(roles);
     }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "password='" + password + '\'' +
-                ", registered=" + registered +
-                ", roles=" + roles +
-                ", email='" + email + '\'' +
-                '}';
-    }
 }

@@ -1,15 +1,16 @@
 package model;
 
 import lombok.*;
+
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @MappedSuperclass
-@Getter
-@Setter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Data
+@EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor
 public abstract class AbstractNamedEntity extends AbstractBaseEntity {
 
     @NotBlank

@@ -1,10 +1,10 @@
 package service;
 
+import lombok.AllArgsConstructor;
 import mapper.MenuMapper;
 import model.Lunch;
 import model.MenuItem;
 import model.Restaurant;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.access.annotation.Secured;
@@ -17,11 +17,15 @@ import to.MenuShortTo;
 import to.MenuTo;
 
 import java.time.LocalDate;
-import java.util.*;
+import java.util.Collection;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Service
+@AllArgsConstructor
 public class MenuService {
 
     private final RestaurantRepository restaurantRepository;
@@ -31,16 +35,6 @@ public class MenuService {
     private final MenuItemRepository menuItemRepository;
 
     private final MenuMapper mapper;
-
-    public MenuService(RestaurantRepository restaurantRepository,
-                       LunchRepository lunchRepository,
-                       MenuItemRepository menuItemRepository,
-                       MenuMapper mapper) {
-        this.restaurantRepository = restaurantRepository;
-        this.lunchRepository = lunchRepository;
-        this.menuItemRepository = menuItemRepository;
-        this.mapper = mapper;
-    }
 
     @Cacheable("menus")
     public List<MenuTo> getByDate(LocalDate registered) {

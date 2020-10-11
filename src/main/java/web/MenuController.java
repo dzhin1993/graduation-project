@@ -1,5 +1,6 @@
 package web;
 
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -13,6 +14,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Slf4j
+@AllArgsConstructor
 @RestController
 @RequestMapping(value = MenuController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
 public class MenuController {
@@ -20,10 +22,6 @@ public class MenuController {
     public static final String REST_URL = "/menus";
 
     private final MenuService service;
-
-    public MenuController(MenuService service) {
-        this.service = service;
-    }
 
     @GetMapping("/by-date")
     public List<MenuTo> getByDate(@RequestParam(required = false) LocalDate date) {

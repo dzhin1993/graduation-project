@@ -1,5 +1,6 @@
 package web;
 
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import model.Vote;
 import org.springframework.http.HttpStatus;
@@ -12,6 +13,7 @@ import service.VotingService;
 import java.util.List;
 
 @Slf4j
+@AllArgsConstructor
 @RestController
 @RequestMapping(value = VotingController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
 public class VotingController {
@@ -20,11 +22,6 @@ public class VotingController {
 
     private final VotingService service;
     private final VotingRepository repository;
-
-    public VotingController(VotingService service, VotingRepository repository) {
-        this.service = service;
-        this.repository = repository;
-    }
 
     @PutMapping("/{voteId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

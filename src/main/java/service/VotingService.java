@@ -1,22 +1,22 @@
 package service;
 
+import lombok.AllArgsConstructor;
 import model.Vote;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import repository.RestaurantRepository;
 import repository.UserRepository;
 import repository.VotingRepository;
-import util.exception.VotingException;
 import util.exception.NotFoundException;
+import util.exception.VotingException;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 import static util.ValidationUtil.assureIdConsistent;
-import static util.ValidationUtil.checkNotFoundWithId;
 
 @Service
+@AllArgsConstructor
 public class VotingService {
 
     public static LocalTime CHANGE_VOTE_TIME = LocalTime.of(11, 0);
@@ -26,14 +26,6 @@ public class VotingService {
     private final RestaurantRepository restaurantRepository;
 
     private final UserRepository userRepository;
-
-    public VotingService(UserRepository userRepository,
-                         RestaurantRepository restaurantRepository,
-                         VotingRepository votingRepository) {
-        this.userRepository = userRepository;
-        this.restaurantRepository = restaurantRepository;
-        this.votingRepository = votingRepository;
-    }
 
     @Transactional
     public Vote create(int userId, int restaurantId) {

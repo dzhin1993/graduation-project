@@ -1,5 +1,6 @@
 package service;
 
+import lombok.AllArgsConstructor;
 import model.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -9,13 +10,10 @@ import repository.UserRepository;
 import web.AuthUser;
 
 @Service("userService")
+@AllArgsConstructor
 public class UserService implements UserDetailsService {
 
     private final UserRepository repository;
-
-    public UserService(UserRepository repository) {
-        this.repository = repository;
-    }
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {

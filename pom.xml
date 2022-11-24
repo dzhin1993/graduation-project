@@ -30,7 +30,7 @@
         <jsonassert.version>1.5.0</jsonassert.version>
 
         <!-- Hibernate -->
-        <hibernate.version>5.3.7.Final</hibernate.version>
+        <hibernate.version>5.3.20.Final</hibernate.version>
         <hibernate-validator.version>6.1.0.Final</hibernate-validator.version>
         <javax-el.version>3.0.1-b10</javax-el.version>
 
